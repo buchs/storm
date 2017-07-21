@@ -123,25 +123,24 @@ In order to provide the at-least once guarantee, all bolts in a stateful topolog
 
 ### IStateful bolt hooks
 IStateful bolt interface provides hook methods where in the stateful bolts could implement some custom actions.
-```java
-    /**
-     * This is a hook for the component to perform some actions just before the
-     * framework commits its state.
-     */
+
+    
+    // This is a hook for the component to perform some actions just before the
+    // framework commits its state.
+    
     void preCommit(long txid);
 
-    /**
-     * This is a hook for the component to perform some actions just before the
-     * framework prepares its state.
-     */
+    
+    // This is a hook for the component to perform some actions just before the
+    // framework prepares its state.
+    
     void prePrepare(long txid);
 
-    /**
-     * This is a hook for the component to perform some actions just before the
-     * framework rolls back the prepared state.
-     */
+    // This is a hook for the component to perform some actions just before the
+    // framework rolls back the prepared state.
+    
     void preRollback();
-```
+
 This is optional and stateful bolts are not expected to provide any implementation. This is provided so that other
 system level components can be built on top of the stateful abstractions where we might want to take some actions before the
 stateful bolt's state is prepared, committed or rolled back.
